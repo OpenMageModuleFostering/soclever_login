@@ -407,7 +407,10 @@ $customer = Mage::getModel("customer/customer");
   $customer->loadByEmail($username);  
   $this->getSession()->loginById($customer->getId());
   
-  
+  if(Mage::getSingleton('customer/session')->isLoggedIn())
+  {
+    exit("1");
+  }
   
   
   
