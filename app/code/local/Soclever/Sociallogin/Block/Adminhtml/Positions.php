@@ -11,7 +11,7 @@ class Soclever_Sociallogin_Block_Adminhtml_Positions extends Mage_Adminhtml_Bloc
           $api_secret=Mage::getStoreConfig('sociallogin_options/apisettings/scsl_appsecret');
           $api_key=Mage::getStoreConfig('sociallogin_options/apisettings/scsl_appid');  
           
-          $valid_data=file_get_contents("https://www.socleversocial.com/dashboard/wp_activate.php?site_id=".$site_id."&api_key=".$api_key."&api_secret=".$api_secret."&csplatform=magentologin");
+          $valid_data=file_get_contents("https://www.socleversocial.com/dashboard/mage_activate.php?site_id=".$site_id."&api_key=".$api_key."&api_secret=".$api_secret."&csplatform=magentologin&type=preview");
           if($valid_data && $valid_data[0]!='0')
           {
             $selectedButtons=Mage::getStoreConfig('sociallogin_options/displaysettings/buttonstyle');           

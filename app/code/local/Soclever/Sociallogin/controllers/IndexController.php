@@ -15,9 +15,15 @@ class Soclever_Sociallogin_IndexController extends Mage_Core_Controller_Front_Ac
 if(isset($_GET['lc']) && $_GET['lc']!='')
 {
     setcookie('lc',$_GET['lc'],time()+100,'/');
+    setcookie('lch',$_GET['lch'],time()-100,'/');
 
 }
-   
+ if(isset($_GET['lch']) && $_GET['lch']!='')
+{
+    setcookie('lch',$_GET['lch'],time()+100,'/');
+    setcookie('lc',$_GET['lc'],time()-100,'/');
+
+}  
    $get_fb=file_get_contents("https://www.socleversocial.com/dashboard/get_fb_data.php?siteid=".Mage::getStoreConfig('sociallogin_options/apisettings/scsl_siteid')."");
    
    if($get_fb!='0')
@@ -120,8 +126,13 @@ $customer = Mage::getModel("customer/customer");
   $customer->setWebsiteId(Mage::app()->getWebsite()->getId());
   $customer->loadByEmail($username);
 
-  $redirect_location=($_GET['lc']=='c')?Mage::getBaseUrl()."checkout/onepage/":Mage::getBaseUrl()."customer/account/";
-  
+  $redirect_location=($_COOKIE['lc']=='c')?Mage::getBaseUrl()."checkout/onepage/":Mage::getBaseUrl()."customer/account/";
+  if(isset($_COOKIE['lch']) && $_COOKIE['lch']!='')
+  {
+    $redirect_location=$_COOKIE['lch'];
+  }
+  $is_from='1';
+  Mage::getSingleton('core/session')->setSessionVariable($is_from); 
   ?>
   <script type="text/javascript">
   
@@ -168,7 +179,7 @@ $customer = Mage::getModel("customer/customer");
   /*}, 3000);*/
   </script>
   <?php
-    echo"<img src='https://www.socleversocial.com/dashboard/images/pw.gif' alt='wait!' title='wait!'>";  
+    //echo"<img src='https://www.socleversocial.com/dashboard/images/pw.gif' alt='wait!' title='wait!'>";  
    $this->getSession()->loginById($customer->getId());
    exit;
           }  
@@ -182,7 +193,7 @@ $customer = Mage::getModel("customer/customer");
 }    
  public function pploginAction()
 {
-    $paypal_data=json_decode($_GET['data']);
+  $paypal_data=json_decode($_GET['data']);
     
   $resource = Mage::getSingleton('core/resource');
   $tableName = $resource->getTableName('customer_entity');
@@ -221,12 +232,14 @@ $customer = Mage::getModel("customer/customer");
   $customer->setWebsiteId(Mage::app()->getWebsite()->getId());
   $customer->loadByEmail($username);
   $redirect_location=($_GET['lc']=='c')?Mage::getBaseUrl()."checkout/onepage/":Mage::getBaseUrl()."customer/account/";
+  $is_from='7';
+  Mage::getSingleton('core/session')->setSessionVariable($is_from);
   ?>
   <script type="text/javascript">
-  setTimeout(function(){ window.location.href="<?php echo $redirect_location; ?>"; }, 3000);
+  setTimeout(function(){ window.location.href="<?php echo $redirect_location; ?>"; },1000);
   </script>
   <?php
-    echo"<img src='https://www.socleversocial.com/dashboard/images/pw.gif' alt='wait!' title='wait!'>";  
+    //echo"<img src='https://www.socleversocial.com/dashboard/images/pw.gif' alt='wait!' title='wait!'>";  
    $this->getSession()->loginById($customer->getId());
    exit;
 }
@@ -280,6 +293,8 @@ try
     {
         if($openid->validate())
         {
+            $is_from='5';
+             Mage::getSingleton('core/session')->setSessionVariable($is_from);
             $d = $openid->getAttributes();
             //echo "https://www.socleversocial.com/dashboard/track_register_new.php?is_yh=1&is_from=5&siteid=".Mage::getStoreConfig('sociallogin_options/apisettings/scsl_siteid')."&other=".json_encode($d)."";
             /*$response_content=file_get_contents("https://www.socleversocial.com/dashboard/track_register_new.php?is_yh=1&is_from=5&siteid=".Mage::getStoreConfig('sociallogin_options/apisettings/scsl_siteid')."&other=".json_encode($d)."");
@@ -348,7 +363,7 @@ xmlhttp.send();
             
             
             <?php
-            exit("<img src='https://www.socleversocial.com/dashboard/images/pw.gif' alt='wait!' title='wait!'>");
+            exit;
             
         
         }
@@ -409,6 +424,8 @@ $customer = Mage::getModel("customer/customer");
   
   if(Mage::getSingleton('customer/session')->isLoggedIn())
   {
+    $is_from=$_POST['is_from'];
+  Mage::getSingleton('core/session')->setSessionVariable($is_from);
     exit("1");
   }
   
