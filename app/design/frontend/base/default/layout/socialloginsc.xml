@@ -6,6 +6,12 @@
          <block type="socialloginsc/scslheadfb"  name="socialloginsc_headfb"  template="socialloginsc/socialloginsc_fb.phtml" />            
          </reference>                  
     </default>
+<default>
+	 	<reference name="before_body_end">
+            <block type="socialloginsc/scslfooter" name="socialloginsc_footer" template="socialloginsc/socialloginsc_footer.phtml" />
+        </reference>        
+	</default>
+    
 <checkout_onepage_index>
 		<reference name="checkout.onepage.login.before">			
 			<block  type="socialloginsc/scslshow" before="-" name="socialloginsc_show">

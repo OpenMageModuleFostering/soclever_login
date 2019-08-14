@@ -48,7 +48,7 @@ class Soclever_Socialloginsc_Model_Info extends Mage_Adminhtml_Block_Abstract im
             <h4 class="ss_admin_fieldset_title"><strong><?php echo $this->__('Extension Information!') ?></strong></h4>
 
             <div style="margin:5px 0">
-                <strong>Version: </strong>1.1.1 <br/>
+                <strong>Version: </strong>1.2.0 <br/>
                 <strong>Author:</strong>Soclever Social<br/>
                 <strong>Website:</strong> <a href="https://www.socleversocial.com" target="_blank">www.socleversocial.com</a>
                 <br/>
@@ -79,10 +79,11 @@ class Soclever_Socialloginsc_Model_Info extends Mage_Adminhtml_Block_Abstract im
                 <li><a target="_blank" href="http://developers.socleversocial.com/magento-social-login-extension/">Extension Installation and Configuration</a></li>
                 <li><a target="_blank" href="http://developers.socleversocial.com/how-to-get-api-key-and-secret/">How to get SoClever API Key &amp; Secret</a></li>
                 <li><a target="_blank" href="http://developers.socleversocial.com/category/social-network-set-up/">How to create Social Network Apps</a></li>
-                <li><a target="_blank" href="https://www.socleversocial.com/">SoClever Products</a></li>
+                <li><a target="_blank" href="http://developers.socleversocial.com/how-to-modify-pop-up-for-twitter-login-on-magento/">How to modify pop up for Twitter Login on magento?</a></li>
             </ul>
             <ul style="float:left; margin-right:43px">
-                <li><a target="_blank" href="http://developers.socleversocial.com/">Developer Forum</a></li>
+                <li><a target="_blank" href="http://developers.socleversocial.com/how-to-change-position-of-login-buttons-on-magento-login-page/">How to change position of Login buttons on Magento Login page?</a></li>
+                <li><a target="_blank" href="http://developers.socleversocial.com/how-to-add-facebook-login-button-on-magento-header/">How to add Facebook login button on Magento Header?</a></li>
                 <li><a target="_blank" href="https://www.socleversocial.com/about-us/">About SoCleverSocial</a></li>
                 <li><a target="_blank" href="http://developers.socleversocial.com/category/cms-plugins/">Social Plugins</a></li>
             </ul>
