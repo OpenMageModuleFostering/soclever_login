@@ -1,0 +1,57 @@
+<?php
+$site_id=Mage::getStoreConfig('socialloginsc_options/apisettings/scsl_siteid');
+$api_secret=Mage::getStoreConfig('socialloginsc_options/apisettings/scsl_appsecret');
+$api_key=Mage::getStoreConfig('socialloginsc_options/apisettings/scsl_appid');  
+$btn_style=Mage::getStoreConfig('socialloginsc_options/displaysettings/buttonstyle');
+$button_size=Mage::getStoreConfig('socialloginsc_options/displaysettings/buttonsize');
+$loginboxcaption=Mage::getStoreConfig('socialloginsc_options/displaysettings/socialloginscboxcaption');
+$showpoweredby=Mage::getStoreConfig('socialloginsc_options/displaysettings/socialloginscpowerby');
+
+$is_validated=Mage::getStoreConfig('socialloginsc_options/apisettings/scsl_validated');
+
+$selected_providers=Mage::getStoreConfig('socialloginsc_options/displaysettings/socialloginscproviders');
+
+          if($is_validated=='1' && $selected_providers!='' && $selected_providers!='0')
+          {
+           
+          $valid_data=file_get_contents("https://www.socleversocial.com/dashboard/mage_login_buttons.php?login_only=2&site_id=".$site_id."&api_key=".$api_key."&api_secret=".$api_secret."&csplatform=magentologin&rt=gp&bcaption=".base64_encode($loginboxcaption)."&bshow=".$showpoweredby."&bstyle=".$btn_style."&bsize=".$button_size."&providers=".$selected_providers);
+          
+          if($valid_data && $valid_data!='0~~0')
+          {
+            echo $valid_data;
+          }
+         else
+         {
+           echo"";
+         }
+         }
+         echo"";
+ 
+ 
+            
+        
+        
+        
+    
+
+
+?>
+
+
+
+
+
+<script type="text/javascript">
+function popupCenter(url) {
+  var title='Login with twitter';
+  var w=600;
+  var h=436;  
+  var left = (screen.width/2)-(w/2);
+  var top = (screen.height/2)-(h/2);
+  return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+} 
+function showPopup(url){
+win = new Window({ title: "Login With Twitter", url:url, zIndex:3000, destroyOnClose: true, recenterAuto:false, resizable: false, width:450, height:473, minimizable: false, maximizable: false, draggable: false});
+win.showCenter(true);
+}
+</script>

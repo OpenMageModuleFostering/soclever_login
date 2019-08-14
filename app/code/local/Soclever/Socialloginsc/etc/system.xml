@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <config>
 	<tabs>
-		<socialloginsetting translate="label" module="sociallogin">
+		<socialloginscsetting translate="label" module="socialloginsc">
             <label>Soclever Social Login</label>
             <sort_order>3</sort_order>
-        </socialloginsetting>
+        </socialloginscsetting>
     </tabs>
     <sections>
-		<sociallogin_options translate="label" module="sociallogin">
+		<socialloginsc_options translate="label" module="socialloginsc">
 			<label>SoClever Social Login</label>
-			<tab>socialloginsetting</tab>
+			<tab>socialloginscsetting</tab>
 			<frontend_type>text</frontend_type>
 			<sort_order>1020</sort_order>
 			<show_in_default>1</show_in_default>
@@ -17,7 +17,7 @@
 			<show_in_store>1</show_in_store>    
 			<groups>
                      <info translate="label">
-                    <frontend_model>Soclever_Sociallogin_Model_Info</frontend_model>
+                    <frontend_model>Soclever_Socialloginsc_Model_Info</frontend_model>
                     <comment><![CDATA[]]></comment>
                     <sort_order>1</sort_order>
                     <show_in_default>1</show_in_default>
@@ -81,7 +81,7 @@
            <buttonstyle translate="label">
            <label>Select Button Style</label>
            <frontend_type>select</frontend_type>    
-            <source_model>sociallogin/providers::getbuttonstyles</source_model>   
+            <source_model>socialloginsc/providers::getbuttonstyles</source_model>   
            <sort_order>200</sort_order>
            <show_in_default>1</show_in_default>
            <show_in_website>1</show_in_website>
@@ -90,22 +90,22 @@
           <buttonsize translate="label">
            <label>Button Size</label>
            <frontend_type>select</frontend_type>    
-            <source_model>sociallogin/providers::getsizes</source_model>   
+            <source_model>socialloginsc/providers::getsizes</source_model>   
            <sort_order>199</sort_order>
            <show_in_default>1</show_in_default>
            <show_in_website>1</show_in_website>
            <show_in_store>1</show_in_store>
           </buttonsize>
-           <socialloginproviders translate="label">
+           <socialloginscproviders translate="label">
            <label>Select Providers</label>
            <frontend_type>multiselect</frontend_type>    
-            <source_model>sociallogin/providers::getloginproviders</source_model>   
+            <source_model>socialloginsc/providers::getloginproviders</source_model>   
            <sort_order>201</sort_order>
            <show_in_default>1</show_in_default>
            <show_in_website>1</show_in_website>
            <show_in_store>1</show_in_store>
-          </socialloginproviders>
-          <socialloginboxcaption translate="label">
+          </socialloginscproviders>
+          <socialloginscboxcaption translate="label">
            <label>Login Box Caption</label>
            <frontend_type>text</frontend_type>    
            <comment><![CDATA[Text to display on social login box i.e Social Login By]]></comment>    
@@ -113,20 +113,29 @@
            <show_in_default>1</show_in_default>
            <show_in_website>1</show_in_website>
            <show_in_store>1</show_in_store>
-          </socialloginboxcaption>
-          <socialloginpowerby translate="label">
+          </socialloginscboxcaption>
+          <socialloginscpowerby translate="label">
            <label>Show Powered by SoClever</label>
            <frontend_type>select</frontend_type>    
-           <source_model>sociallogin/providers::showpoweredby</source_model>              
+           <source_model>socialloginsc/providers::showpoweredby</source_model>              
            <comment><![CDATA[At the bottom of login box will show "Powered By Socleversocial.com"]]></comment>    
            <sort_order>202</sort_order>
            <show_in_default>1</show_in_default>
            <show_in_website>1</show_in_website>
            <show_in_store>1</show_in_store>
-          </socialloginpowerby>
+          </socialloginscpowerby>
+          <socialloginregemail translate="label">
+           <label>Send welcome email?</label>
+           <frontend_type>select</frontend_type>    
+           <source_model>adminhtml/system_config_source_yesno</source_model>
+           <sort_order>203</sort_order>
+           <show_in_default>1</show_in_default>
+           <show_in_website>1</show_in_website>
+           <show_in_store>1</show_in_store>
+          </socialloginregemail>
           </fields>           
 	</displaysettings>
     		</groups> 
-		</sociallogin_options>		
+		</socialloginsc_options>		
 	</sections>
 </config>

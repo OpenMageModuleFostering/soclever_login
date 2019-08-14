@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <modules>
-        <Soclever_Sociallogin>
+        <Soclever_Socialloginsc>
             <active>true</active>
             <codePool>local</codePool>
-        </Soclever_Sociallogin>
+        </Soclever_Socialloginsc>
     </modules>
 </config>

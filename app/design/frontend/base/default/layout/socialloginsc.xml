@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<layout version="1.0.0">
+    <default>
+	 <reference name="head">
+         <block type="socialloginsc/scslhead"  name="socialloginsc_head"  template="socialloginsc/socialloginsc_head.phtml" />
+         <block type="socialloginsc/scslheadfb"  name="socialloginsc_headfb"  template="socialloginsc/socialloginsc_fb.phtml" />            
+         </reference>                  
+    </default>
+<checkout_onepage_index>
+		<reference name="checkout.onepage.login.before">			
+			<block  type="socialloginsc/scslshow" before="-" name="socialloginsc_show">
+				
+			</block> 
+		</reference> 		
+	</checkout_onepage_index>  
+  <customer_account_login>		 
+		 <reference name="content">
+		 	<block  type="socialloginsc/scslshow" before="-" name="socialloginsc_show">
+				
+			</block> 
+		 </reference>
+	</customer_account_login>
+<checkout_onepage_success>
+    <reference name="content">			
+			<block type="socialloginsc/scsltrackpixel"  name="socialloginsc_trackpixel"  template="socialloginsc/socialloginsc_trackpixel.phtml" />
+		</reference> 		
+    </checkout_onepage_success>
+</layout>

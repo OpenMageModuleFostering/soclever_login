@@ -1,6 +1,6 @@
 <?php
 
-class Soclever_Sociallogin_Model_Providers
+class Soclever_Socialloginsc_Model_Providers
 {
     public function getbuttonstyles()
     {
@@ -20,6 +20,7 @@ public function getloginproviders()
             array('value'=>0, 'label'=>'None'),
             array('value'=>2, 'label'=>'Facebook'),
             array('value'=>4, 'label'=>'Google+'),
+            array('value'=>13, 'label'=>'Twitter'),
             array('value'=>7, 'label'=>'LinkedIN'),            
             array('value'=>15, 'label'=>'Yahoo!'),
             array('value'=>16, 'label'=>'Paypal'),

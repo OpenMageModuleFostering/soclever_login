@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Soclever SocialLogin Extension
+ * Soclever Socialloginsc Extension
  *
  * @category     Extension
  * @copyright    Copyright (c) 2014 Soclever (https://www.socleversocial.com)
@@ -15,47 +15,47 @@
 
 <config>
 <modules>
-        <Soclever_Sociallogin>
+        <Soclever_Socialloginsc>
             <version>1.1.1</version>
-        </Soclever_Sociallogin>
+        </Soclever_Socialloginsc>
     </modules>
 <default>
-        <sociallogin_options>
+        <socialloginsc_options>
             <displaysettings>
                 <buttonstyle>ic</buttonstyle>  
-                <socialloginboxcaption>Login With:</socialloginboxcaption>              
+                <socialloginscboxcaption>Login With:</socialloginscboxcaption>              
             </displaysettings>
-        </sociallogin_options>
+        </socialloginsc_options>
     </default>
 	
     <frontend>
         <routers>
-<soclever_sociallogin>
+<soclever_socialloginsc>
 				<use>standard</use>
 				<args>
-					<module>Soclever_Sociallogin</module>
-					<frontName>soclever_sociallogin</frontName>
+					<module>Soclever_Socialloginsc</module>
+					<frontName>soclever_socialloginsc</frontName>
 				</args>
-			</soclever_sociallogin>
+			</soclever_socialloginsc>
 
         </routers>
         <layout>
             <updates>
-                <Soclever_Sociallogin>
-                    <file>sociallogin.xml</file>
-                </Soclever_Sociallogin>
+                <Soclever_Socialloginsc>
+                    <file>socialloginsc.xml</file>
+                </Soclever_Socialloginsc>
             </updates>
         </layout>
     </frontend>
 	<admin>
         <routers>
-			<sociallogin>
+			<socialloginsc>
 				<use>admin</use>
 				<args>
-					<module>Soclever_Sociallogin</module>
-					<frontName>Sociallogin admin</frontName>
+					<module>Soclever_Socialloginsc</module>
+					<frontName>Socialloginsc admin</frontName>
 				</args>
-			</sociallogin>
+			</socialloginsc>
         </routers>
     </admin>
 	<adminhtml>
@@ -67,9 +67,9 @@
                             <children>
                                 <config>
                                     <children>
-                                        <sociallogin_options>
+                                        <socialloginsc_options>
                                             <title>Store Social Login Module Section</title>
-                                        </sociallogin_options>
+                                        </socialloginsc_options>
                                     </children>
                                 </config>
                             </children>
@@ -81,50 +81,50 @@
     </adminhtml>   
 	<global>
 		<models>
-            <sociallogin>
-                <class>Soclever_Sociallogin_Model</class>
-            </sociallogin>
+            <socialloginsc>
+                <class>Soclever_Socialloginsc_Model</class>
+            </socialloginsc>
         </models>
         <resources>
-			<soclever_sociallogin_setup>
+			<soclever_socialloginsc_setup>
 				<setup>
-					<module>Soclever_Sociallogin</module>
+					<module>Soclever_Socialloginsc</module>
 				</setup>
 				<connection>
 					<use>core_setup</use>
 				</connection>
-			</soclever_sociallogin_setup>
-			<soclever_sociallogin_write>
+			</soclever_socialloginsc_setup>
+			<soclever_socialloginsc_write>
 				<connection>
 					<use>core_write</use>
 				</connection>
-			</soclever_sociallogin_write>
-			<soclever_sociallogin_read>
+			</soclever_socialloginsc_write>
+			<soclever_socialloginsc_read>
 				<connection>
 					<use>core_read</use>
 				</connection>
-			</soclever_sociallogin_read>
+			</soclever_socialloginsc_read>
 		</resources>
         <blocks>
-			<sociallogin>
-				<class>Soclever_Sociallogin_Block</class>
-			</sociallogin>
+			<socialloginsc>
+				<class>Soclever_Socialloginsc_Block</class>
+			</socialloginsc>
 		</blocks>
 		<helpers>
-			<sociallogin>
-				<class>Soclever_Sociallogin_Helper</class>
-			</sociallogin>
+			<socialloginsc>
+				<class>Soclever_Socialloginsc_Helper</class>
+			</socialloginsc>
 		</helpers>
         <events>        
-    <admin_system_config_changed_section_sociallogin_options>   
+    <admin_system_config_changed_section_socialloginsc_options>   
     <observers>
     <myobserver>
         <type>singleton</type>
-        <class>sociallogin/observer</class>
+        <class>socialloginsc/observer</class>
         <method>writejs</method> 
     </myobserver>
     </observers>
-</admin_system_config_changed_section_sociallogin_options>
+</admin_system_config_changed_section_socialloginsc_options>
 </events>
 	</global>
 </config>

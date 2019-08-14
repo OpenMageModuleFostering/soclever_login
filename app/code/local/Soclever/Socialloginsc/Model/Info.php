@@ -1,5 +1,5 @@
 <?php
-class Soclever_Sociallogin_Model_Info extends Mage_Adminhtml_Block_Abstract implements Varien_Data_Form_Element_Renderer_Interface
+class Soclever_Socialloginsc_Model_Info extends Mage_Adminhtml_Block_Abstract implements Varien_Data_Form_Element_Renderer_Interface
 {
 
    
@@ -48,12 +48,12 @@ class Soclever_Sociallogin_Model_Info extends Mage_Adminhtml_Block_Abstract impl
             <h4 class="ss_admin_fieldset_title"><strong><?php echo $this->__('Extension Information!') ?></strong></h4>
 
             <div style="margin:5px 0">
-                <strong>Version: </strong>1.1.0 <br/>
+                <strong>Version: </strong>1.1.1 <br/>
                 <strong>Author:</strong>Soclever Social<br/>
                 <strong>Website:</strong> <a href="https://www.socleversocial.com" target="_blank">www.socleversocial.com</a>
                 <br/>
 
-                <div id="sociallogin_get_update" style="float:left;">To receive updates on new features and releases, Please follow us on one of our social media pages
+                <div id="socialloginsc_get_update" style="float:left;">To receive updates on new features and releases, Please follow us on one of our social media pages
                 </div>
                 <div id="ss_media_pages_container">
                     <a target="_blank" href="https://www.facebook.com/socleversocial"><img
