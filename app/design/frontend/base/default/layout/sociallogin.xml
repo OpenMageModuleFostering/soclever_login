@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<layout version="1.0.0">
+    <default>
+	 <reference name="head">
+         <block type="sociallogin/scslhead"  name="sociallogin_head"  template="sociallogin/sociallogin_head.phtml" />   
+         </reference>
+    </default>   
+<checkout_onepage_index>
+		<reference name="checkout.onepage.login.before">			
+			<block  type="sociallogin/scslshow" before="-" name="sociallogin_show">
+				
+			</block> 
+		</reference> 		
+	</checkout_onepage_index>  
+  <customer_account_login>		 
+		 <reference name="content">
+		 	<block  type="sociallogin/scslshow"  name="sociallogin_show">
+				
+			</block> 
+		 </reference>
+	</customer_account_login>
+</layout>

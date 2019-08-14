@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Soclever SocialLogin Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2014 Soclever (https://www.socleversocial.com)
+ * @author       Socleverteam
+ * @license      GPL
+ * @terms of use https://www.socleversocial.com
+ * @version      Release: 1.0
+ * @since        Available since Release 1.0
+ */ 
+ -->
+
+<config>
+<modules>
+        <Soclever_Sociallogin>
+            <version>1.1.1</version>
+        </Soclever_Sociallogin>
+    </modules>
+<default>
+        <sociallogin_options>
+            <displaysettings>
+                <buttonstyle>ic</buttonstyle>                
+            </displaysettings>
+        </sociallogin_options>
+    </default>
+	
+    <frontend>
+        <routers>
+<soclever_sociallogin>
+				<use>standard</use>
+				<args>
+					<module>Soclever_Sociallogin</module>
+					<frontName>soclever_sociallogin</frontName>
+				</args>
+			</soclever_sociallogin>
+
+        </routers>
+        <layout>
+            <updates>
+                <Soclever_Sociallogin>
+                    <file>sociallogin.xml</file>
+                </Soclever_Sociallogin>
+            </updates>
+        </layout>
+    </frontend>
+	<admin>
+        <routers>
+			<sociallogin>
+				<use>admin</use>
+				<args>
+					<module>Soclever_Sociallogin</module>
+					<frontName>Sociallogin admin</frontName>
+				</args>
+			</sociallogin>
+        </routers>
+    </admin>
+	<adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <sociallogin_options>
+                                            <title>Store Social Login Module Section</title>
+                                        </sociallogin_options>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>   
+	<global>
+		<models>
+            <sociallogin>
+                <class>Soclever_Sociallogin_Model</class>
+            </sociallogin>
+        </models>
+        <resources>
+			<soclever_sociallogin_setup>
+				<setup>
+					<module>Soclever_Sociallogin</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</soclever_sociallogin_setup>
+			<soclever_sociallogin_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</soclever_sociallogin_write>
+			<soclever_sociallogin_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</soclever_sociallogin_read>
+		</resources>
+        <blocks>
+			<sociallogin>
+				<class>Soclever_Sociallogin_Block</class>
+			</sociallogin>
+		</blocks>
+		<helpers>
+			<sociallogin>
+				<class>Soclever_Sociallogin_Helper</class>
+			</sociallogin>
+		</helpers>
+	</global>
+</config>

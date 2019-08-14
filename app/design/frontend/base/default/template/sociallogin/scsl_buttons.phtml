@@ -1,0 +1,191 @@
+<?php
+$site_id=Mage::getStoreConfig('sociallogin_options/apisettings/scsl_siteid');
+$api_secret=Mage::getStoreConfig('sociallogin_options/apisettings/scsl_appsecret');
+$api_key=Mage::getStoreConfig('sociallogin_options/apisettings/scsl_appid');  
+          
+          $valid_data=file_get_contents("https://www.socleversocial.com/dashboard/wp_activate.php?site_id=".$site_id."&api_key=".$api_key."&api_secret=".$api_secret."&csplatform=magentologin&rt=gp");
+          
+          if($valid_data && $valid_data!='0~~0')
+          {
+            $valid_data_arr=explode("@@@",$valid_data);   
+            $selectedButtons=Mage::getStoreConfig('sociallogin_options/displaysettings/buttonstyle');           
+            $selectedProviders="https://www.socleversocial.com/dashboard/img/social_icon/social_login_fc_30.png";
+            $btn_style=Mage::getStoreConfig('sociallogin_options/displaysettings/buttonstyle');
+            $button_size=Mage::getStoreConfig('sociallogin_options/displaysettings/buttonsize');
+            $SITE_URL="https://www.socleversocial.com/dashboard/";
+            if($btn_style=="ic") {
+        $btn_width=$button_size;
+    }
+    else if($btn_style=="fc" || $btn_style=="fg")
+    {
+        if($button_size=="30") {$btn_width="78"; }
+        if($button_size=="40") {$btn_width="104"; }
+        if($button_size=="50") {$btn_width="130"; }
+        if($button_size=="60") {$btn_width="156"; }
+        if($button_size=="65") {$btn_width="169"; }
+    }
+
+         $network=explode(",",$valid_data_arr[0]);
+    $imgdiv="";     
+    $img='social_login_'.$btn_style.'_'.$button_size.'.png';
+/*if(in_array('2',$network))
+{
+    $bg_position=$btn_width;
+    $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;width: '.$btn_width.'px; height: '.$button_size.'px; background-image: url('.$SITE_URL.'img/social_icon/'.$img.'); background-position: -'.$bg_position.'px 0px;"></div>';
+    
+    
+}
+
+if(in_array('4',$network))
+{
+    $bg_position=((3)*$btn_width);
+
+    $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px; width: '.$btn_width.'px; height: '.$button_size.'px; background-image: url('.$SITE_URL.'img/social_icon/'.$img.'); background-position: -'.$bg_position.'px 0px;"></div>';
+
+  
+}
+
+if(in_array('7',$network))
+{
+    $bg_position=((6)*$btn_width);
+    
+    $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px; width: '.$btn_width.'px; height: '.$button_size.'px; background-image: url('.$SITE_URL.'img/social_icon/'.$img.'); background-position: -'.$bg_position.'px 0px;"></div>';
+    
+  
+}
+
+if(in_array('13',$network))
+{
+    $bg_position=((12)*$btn_width);
+
+    $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px; width: '.$btn_width.'px; height: '.$button_size.'px; background-image: url('.$SITE_URL.'img/social_icon/'.$img.'); background-position: -'.$bg_position.'px 0px;"></div>';
+
+  
+}
+
+if(in_array('15',$network))
+{
+    $bg_position=((14)*$btn_width);
+
+    $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px; width: '.$btn_width.'px; height: '.$button_size.'px; background-image: url('.$SITE_URL.'img/social_icon/'.$img.'); background-position: -'.$bg_position.'px 0px;"></div>';
+  
+}
+
+if(in_array('16',$network))
+{
+    $bg_position=((15)*$btn_width); //change when image is added 
+
+    $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px; width: '.$btn_width.'px; height: '.$button_size.'px; background-image: url('.$SITE_URL.'img/social_icon/'.$img.'); background-position: -'.$bg_position.'px 0px;"></div>';
+  
+}
+
+if(in_array('5',$network))
+{
+    $bg_position=((4)*$btn_width);
+    
+    $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px; width: '.$btn_width.'px; height: '.$button_size.'px; background-image: url('.$SITE_URL.'img/social_icon/'.$img.'); background-position: -'.$bg_position.'px 0px;"></div>';
+    
+  
+}
+*/
+
+$fb_div="";
+if(in_array('2',$network))
+{
+    $bg_position=$btn_width;
+    $fb_div .='<script type="text/javascript">';
+    $imgdiv='<div style="float: left; margin-right: 10px;margin-top: 10px; width: '.$btn_width.'px; height: '.$button_size.'px; background-image: url('.$SITE_URL.'img/social_icon/'.$img.'); background-position: -'.$bg_position.'px 0px;"></div>';
+    $fb_div .='csbutton.init([\''.$imgdiv.'\',\''.$btn_width.'px\' ,\''.$button_size.'\',\'login_fb\']);'.PHP_EOL;
+    $fb_div .='csbutton.putCsbutton();         
+              </script>';
+
+    
+}
+$gp_div="";
+if(in_array('4',$network))
+{
+    $bg_position=((3)*$btn_width);
+    $gp_div .='<script type="text/javascript">';
+    $imgdiv='<div style="float: left; margin-right: 10px;margin-top: 10px; width: '.$btn_width.'px; height: '.$button_size.'px; background-image: url('.$SITE_URL.'img/social_icon/'.$img.'); background-position: -'.$bg_position.'px 0px;"></div>';
+    $gp_div .='csbutton.init([\''.$imgdiv.'\',\''.$btn_width.'px\' ,\''.$button_size.'px\',\'login\',\''.$valid_data_arr[1].'\']);'.PHP_EOL;
+    $gp_div .='csbutton.putCsbutton();         
+              </script>';
+  
+}
+$li_div="";
+if(in_array('7',$network))
+{
+    $bg_position=((6)*$btn_width);
+    $li_div .='<script type="text/javascript">';
+    $imgdiv='<div style="float: left; margin-right: 10px;margin-top: 10px;  width: '.$btn_width.'px; height: '.$button_size.'px; background-image: url('.$SITE_URL.'img/social_icon/'.$img.'); background-position: -'.$bg_position.'px 0px;"></div>';
+    $li_div .='csbutton.init([\''.$imgdiv.'\',\''.$btn_width.'px\' ,\''.$button_size.'px\',\'login\',\'li\']);'.PHP_EOL;
+    $li_div .='csbutton.putCsbutton();         
+              </script>';
+  
+}
+$tw_div="";
+if(in_array('13',$network))
+{
+    $bg_position=((12)*$btn_width);
+    $tw_div .='<script type="text/javascript">';
+    $imgdiv='<div style="float: left; margin-right: 10px; margin-top: 10px; width: '.$btn_width.'px; height: '.$button_size.'px; background-image: url('.$SITE_URL.'img/social_icon/'.$img.'); background-position: -'.$bg_position.'px 0px;"></div>';
+    $tw_div .='csbutton.init([\''.$imgdiv.'\',\''.$btn_width.'px\' ,\''.$button_size.'px\',\'login\',\'twitter\']);'.PHP_EOL;
+    $tw_div .='csbutton.putCsbutton();         
+              </script>';
+  
+}
+$yh_div="";
+if(in_array('15',$network))
+{
+    $bg_position=((14)*$btn_width);
+    $yh_div .='<script type="text/javascript">';
+    $imgdiv='<div style="float: left; margin-right: 10px;margin-top: 10px; width: '.$btn_width.'px; height: '.$button_size.'px; background-image: url('.$SITE_URL.'img/social_icon/'.$img.'); background-position: -'.$bg_position.'px 0px;"></div>';
+    $yh_div .='csbutton.init([\''.$imgdiv.'\',\''.$btn_width.'px\' ,\''.$button_size.'px\',\'login\',\'yahoo\']);'.PHP_EOL;
+    $yh_div .='csbutton.putCsbutton();         
+              </script>';
+  
+}
+$pp_div="";
+if(in_array('16',$network))
+{
+    $bg_position=((15)*$btn_width); //change when image is added 
+    $pp_div .='<script type="text/javascript">';
+    $imgdiv='<div style="float: left; margin-right: 10px;margin-top: 10px; width: '.$btn_width.'px; height: '.$button_size.'px; background-image: url('.$SITE_URL.'img/social_icon/'.$img.'); background-position: -'.$bg_position.'px 0px;"></div>';
+    $pp_div .='csbutton.init([\''.$imgdiv.'\',\''.$btn_width.'px\' ,\''.$button_size.'px\',\'login\',\'paypal\']);'.PHP_EOL;
+    $pp_div .='csbutton.putCsbutton();         
+              </script>';
+  
+}
+$ig_div="";
+if(in_array('5',$network))
+{
+    $bg_position=((4)*$btn_width);
+    $ig_div .='<script type="text/javascript">';
+    $imgdiv='<div style="float: left; margin-right: 10px;margin-top: 10px; width: '.$btn_width.'px; height: '.$button_size.'px; background-image: url('.$SITE_URL.'img/social_icon/'.$img.'); background-position: -'.$bg_position.'px 0px;"></div>';
+    $ig_div .='csbutton.init([\''.$imgdiv.'\',\''.$btn_width.'px\' ,\''.$button_size.'px\',\'login\',\'instagram\']);'.PHP_EOL;
+    $ig_div .='csbutton.putCsbutton();         
+              </script>';
+  
+}
+
+$imgdiv='<script type="text/javascript" src="https://www.socleversocial.com/dashboard/client_share_js/csloginbuttons_'.$site_id.'.js"></script>'.PHP_EOL.$fb_div.PHP_EOL.$gp_div.PHP_EOL.$li_div.PHP_EOL.$tw_div.PHP_EOL.$yh_div.PHP_EOL.$ig_div.PHP_EOL.$pp_div;
+            
+           
+      echo '<div  style="margin-bottom:20px;width:96%;margin-bottom:10px;border:1px solid #bbb6a5;padding:14px 21px;clear:both;"><div><b>Login by your social profile.</b></div>'.$imgdiv.'<div style="clear: both;text-align:left;padding-top:10px;"><b>Powered by </b><a href="https://www.socleversocial.com/" target="_blank">Socleversocial.com</a></div></div>';
+    
+        
+      }
+         else
+         {
+           echo"<h1>Please provide valid API setting</h1>";
+         }
+ 
+ 
+            
+        
+        
+        
+    
+
+
+?>

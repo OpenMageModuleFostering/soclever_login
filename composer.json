@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/soclever_login",
+    "type": "magento-module",
+    "license": "OSL",
+    "homepage": "",
+    "description": "This module enables Social Login, User Profile Data & Social Analytics on your Magento site. ",
+    "authors": [
+    {
+        "name": "Soclever Social",
+        "email": "hemang@socleversocial.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
