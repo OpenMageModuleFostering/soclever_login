@@ -135,12 +135,20 @@
            <show_in_default>1</show_in_default>
            <show_in_website>1</show_in_website>
            <show_in_store>1</show_in_store>
-          </buttonstylepp>          
+          </buttonstylepp>
+          <buttonstylems translate="label">
+           <label>Microsoft</label>
+           <frontend_type>text</frontend_type>
+           <sort_order>207</sort_order>
+           <show_in_default>1</show_in_default>
+           <show_in_website>1</show_in_website>
+           <show_in_store>1</show_in_store>
+          </buttonstylems>          
           <buttonsize translate="label">
            <label>Button Size</label>
            <frontend_type>select</frontend_type>    
             <source_model>socialloginsc/providers::getsizes</source_model>   
-           <sort_order>207</sort_order>
+           <sort_order>307</sort_order>
            <show_in_default>1</show_in_default>
            <show_in_website>1</show_in_website>
            <show_in_store>1</show_in_store>
@@ -149,7 +157,7 @@
            <label>Select Providers</label>
            <frontend_type>multiselect</frontend_type>    
             <source_model>socialloginsc/providers::getloginproviders</source_model>   
-           <sort_order>208</sort_order>
+           <sort_order>308</sort_order>
            <show_in_default>1</show_in_default>
            <show_in_website>1</show_in_website>
            <show_in_store>1</show_in_store>
@@ -158,7 +166,7 @@
            <label>Login Box Caption</label>
            <frontend_type>text</frontend_type>    
            <comment><![CDATA[Text to display on social login box i.e Social Login By]]></comment>    
-           <sort_order>209</sort_order>
+           <sort_order>309</sort_order>
            <show_in_default>1</show_in_default>
            <show_in_website>1</show_in_website>
            <show_in_store>1</show_in_store>
@@ -168,7 +176,7 @@
            <frontend_type>select</frontend_type>    
            <source_model>socialloginsc/providers::showpoweredby</source_model>              
            <comment><![CDATA[At the bottom of login box will show "Powered By Socleversocial.com"]]></comment>    
-           <sort_order>210</sort_order>
+           <sort_order>310</sort_order>
            <show_in_default>1</show_in_default>
            <show_in_website>1</show_in_website>
            <show_in_store>1</show_in_store>
@@ -177,11 +185,119 @@
            <label>Send welcome email?</label>
            <frontend_type>select</frontend_type>    
            <source_model>adminhtml/system_config_source_yesno</source_model>
-           <sort_order>211</sort_order>
+           <sort_order>311</sort_order>
            <show_in_default>1</show_in_default>
            <show_in_website>1</show_in_website>
            <show_in_store>1</show_in_store>
           </socialloginregemail>
+          <socialloginscfbappid translate="label">
+           <label>Facebook App. ID</label>
+           <frontend_type>text</frontend_type>    
+           <comment><![CDATA[Facebook Application ID]]></comment>    
+           <sort_order>312</sort_order>
+           <show_in_default>1</show_in_default>
+           <show_in_website>1</show_in_website>
+           <show_in_store>1</show_in_store>
+          </socialloginscfbappid>          
+          <socialloginscfbsecretkey translate="label">
+           <label>Facebook App. Secret</label>
+           <frontend_type>text</frontend_type>    
+           <comment><![CDATA[Facebook Application Secret]]></comment>    
+           <sort_order>313</sort_order>
+           <show_in_default>1</show_in_default>
+           <show_in_website>1</show_in_website>
+           <show_in_store>1</show_in_store>
+          </socialloginscfbsecretkey>
+          <socialloginscppappid translate="label">
+           <label>Paypal Client ID</label>
+           <frontend_type>text</frontend_type>    
+           <comment><![CDATA[Paypal Client ID]]></comment>    
+           <sort_order>314</sort_order>
+           <show_in_default>1</show_in_default>
+           <show_in_website>1</show_in_website>
+           <show_in_store>1</show_in_store>
+          </socialloginscppappid>          
+          <socialloginscppsecretkey translate="label">
+           <label>Paypal Secret</label>
+           <frontend_type>text</frontend_type>    
+           <comment><![CDATA[Paypal Application Secret]]></comment>    
+           <sort_order>315</sort_order>
+           <show_in_default>1</show_in_default>
+           <show_in_website>1</show_in_website>
+           <show_in_store>1</show_in_store>
+          </socialloginscppsecretkey>
+          <socialloginscgpappid translate="label">
+           <label>Google+ Client ID</label>
+           <frontend_type>text</frontend_type>    
+           <comment><![CDATA[Google+ Client ID]]></comment>    
+           <sort_order>316</sort_order>
+           <show_in_default>1</show_in_default>
+           <show_in_website>1</show_in_website>
+           <show_in_store>1</show_in_store>
+          </socialloginscgpappid>          
+          <socialloginscgpsecretkey translate="label">
+           <label>Google+ Client Secret</label>
+           <frontend_type>text</frontend_type>    
+           <comment><![CDATA[Google+ Client Secret]]></comment>    
+           <sort_order>317</sort_order>
+           <show_in_default>1</show_in_default>
+           <show_in_website>1</show_in_website>
+           <show_in_store>1</show_in_store>
+          </socialloginscgpsecretkey>
+          <socialloginscliappid translate="label">
+           <label>LinkedIN Client ID</label>
+           <frontend_type>text</frontend_type>    
+           <comment><![CDATA[LinkedIN Client ID]]></comment>    
+           <sort_order>318</sort_order>
+           <show_in_default>1</show_in_default>
+           <show_in_website>1</show_in_website>
+           <show_in_store>1</show_in_store>
+          </socialloginscliappid>          
+          <socialloginsclisecretkey translate="label">
+           <label>LinkedIN Client Secret</label>
+           <frontend_type>text</frontend_type>    
+           <comment><![CDATA[LinkedIN Client Secret]]></comment>    
+           <sort_order>319</sort_order>
+           <show_in_default>1</show_in_default>
+           <show_in_website>1</show_in_website>
+           <show_in_store>1</show_in_store>
+          </socialloginsclisecretkey>
+          <socialloginsctwappid translate="label">
+           <label>Twitter Consumer Key (API Key)</label>
+           <frontend_type>text</frontend_type>    
+           <comment><![CDATA[Twitter Consumer Key (API Key)]]></comment>    
+           <sort_order>320</sort_order>
+           <show_in_default>1</show_in_default>
+           <show_in_website>1</show_in_website>
+           <show_in_store>1</show_in_store>
+          </socialloginsctwappid>          
+          <socialloginsctwsecretkey translate="label">
+           <label>Twitter Consumer Secret (API Secret)</label>
+           <frontend_type>text</frontend_type>    
+           <comment><![CDATA[Twitter Consumer Secret (API Secret)]]></comment>    
+           <sort_order>321</sort_order>
+           <show_in_default>1</show_in_default>
+           <show_in_website>1</show_in_website>
+           <show_in_store>1</show_in_store>
+          </socialloginsctwsecretkey>
+          <socialloginscmsappid translate="label">
+           <label>Microsoft Client ID</label>
+           <frontend_type>text</frontend_type>    
+           <comment><![CDATA[Microsoft Client ID]]></comment>    
+           <sort_order>322</sort_order>
+           <show_in_default>1</show_in_default>
+           <show_in_website>1</show_in_website>
+           <show_in_store>1</show_in_store>
+          </socialloginscmsappid>          
+          <socialloginscmssecretkey translate="label">
+           <label>Microsoft Client Secret</label>
+           <frontend_type>text</frontend_type>    
+           <comment><![CDATA[Microsoft Client Secret]]></comment>    
+           <sort_order>323</sort_order>
+           <show_in_default>1</show_in_default>
+           <show_in_website>1</show_in_website>
+           <show_in_store>1</show_in_store>
+          </socialloginscmssecretkey>          
           </fields>           
 	</displaysettings>
     		</groups> 

@@ -23,6 +23,7 @@ public function getloginproviders()
             array('value'=>13, 'label'=>'Twitter'),
             array('value'=>7, 'label'=>'LinkedIN'),            
             array('value'=>15, 'label'=>'Yahoo!'),
+            array('value'=>8, 'label'=>'Microsoft'),
             array('value'=>16, 'label'=>'Paypal'),
                                    
         );

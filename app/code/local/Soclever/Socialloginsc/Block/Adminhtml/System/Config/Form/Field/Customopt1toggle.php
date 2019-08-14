@@ -45,7 +45,8 @@ class Soclever_Socialloginsc_Block_Adminhtml_System_Config_Form_Field_Customopt1
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstyleli').show();                        
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstyletw').show();
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstyleyh').show();
-                        document.getElementById('row_socialloginsc_options_displaysettings_buttonstylepp').show();                        
+                        document.getElementById('row_socialloginsc_options_displaysettings_buttonstylepp').show();
+                        document.getElementById('row_socialloginsc_options_displaysettings_buttonstylems').show();                        
                     } else {
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstylefb').hide();
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstylegp').hide();
@@ -53,6 +54,7 @@ class Soclever_Socialloginsc_Block_Adminhtml_System_Config_Form_Field_Customopt1
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstyletw').hide();
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstyleyh').hide();
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstylepp').hide();
+                        document.getElementById('row_socialloginsc_options_displaysettings_buttonstylems').hide();
                         
                     }
                 });
@@ -64,7 +66,8 @@ class Soclever_Socialloginsc_Block_Adminhtml_System_Config_Form_Field_Customopt1
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstyleli').show();                        
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstyletw').show();
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstyleyh').show();
-                        document.getElementById('row_socialloginsc_options_displaysettings_buttonstylepp').show();                                                
+                        document.getElementById('row_socialloginsc_options_displaysettings_buttonstylepp').show();
+                        document.getElementById('row_socialloginsc_options_displaysettings_buttonstylems').show();                                                
                     } else {
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstylefb').hide();
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstylegp').hide();
@@ -72,6 +75,7 @@ class Soclever_Socialloginsc_Block_Adminhtml_System_Config_Form_Field_Customopt1
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstyletw').hide();
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstyleyh').hide();
                         document.getElementById('row_socialloginsc_options_displaysettings_buttonstylepp').hide();
+                        document.getElementById('row_socialloginsc_options_displaysettings_buttonstylems').hide();
                         
                     }
                 });

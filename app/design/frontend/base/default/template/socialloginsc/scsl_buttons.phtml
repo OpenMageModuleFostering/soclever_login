@@ -10,25 +10,196 @@ $loginboxcaption=Mage::getStoreConfig('socialloginsc_options/displaysettings/soc
 $showpoweredby=Mage::getStoreConfig('socialloginsc_options/displaysettings/socialloginscpowerby');
 
 $is_validated=Mage::getStoreConfig('socialloginsc_options/apisettings/scsl_validated');
+$file_headers = get_headers("https://www.socleversocial.com/dashboard/scon.php");
+if(strpos($file_headers[0], '200') !== false)
+{
+  $soclever_on=1;
+  
+} 
+else
+{
+    $is_validated=1;
+    $soclever_on=0;
+}
 
 $selected_providers=Mage::getStoreConfig('socialloginsc_options/displaysettings/socialloginscproviders');
 
           if($is_validated=='1' && $selected_providers!='' && $selected_providers!='0')
           {
           
+           $provider_arr=explode(",",$selected_providers);
+           
+           
+          if($soclever_on==0)
+          {
+            $lc=(strpos($_SERVER['REQUEST_URI'],'checkout'))?'c':'l';
+            $imgdiv='<script type="text/javascript">
+                    if(typeof cspopupCenterMagentoLogin != \'function\' )
+                    {
+                        function cspopupCenterMagentoLogin(url, title, w, h) {
+                                            var left = (screen.width/2)-(w/2);
+                                            var top = (screen.height/2)-(h/2);
+                                                return window.open(url, title, \'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=\'+w+\', height=\'+h+\', top=\'+top+\', left=\'+left);
+                                            } 
+                    }
+                    if(typeof csgalogintrack != \'function\' )
+                    {
+                        function csgalogintrack(social_media,csclient_id)
+                                {
+                                 
+                                 if(window.ga && ga.create)
+                            {
+                            
+                            
+                            ga(\'send\', {\'hitType\': \'event\', 
+                                            \'eventCategory\': \'SocleverSocial\', 
+                                            \'eventAction\': \'Login\',
+                                            \'eventLabel\': social_media,
+                                            \'eventValue\': csclient_id
+                                            });
+                            } 
+                            else if (window._gaq)
+                            {
+                                
+                                _gaq.push([\'_trackEvent\', \'SocleverSocial\',\'Login\',social_media,csclient_id])
+                        
+                            }   
+                                
+                          }
+                   }
+                </script>        
+                ';
+                $imgdiv .=PHP_EOL;
+                $isIosChrome = (strpos($_SERVER['HTTP_USER_AGENT'], 'CriOS') !== false) ? true : false;
+            if(in_array('2',$provider_arr))
+            {
+                
+                if($isIosChrome)
+                {
+                  $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;"><a onclick="csgalogintrack(\'Facebook\',\''.$site_id.'\');"  href=\''.Mage::getBaseUrl().'soclever_socialloginsc/index/fblogin?lc='.$lc.'\'><img src="'.Mage::getBaseUrl().'soclever_socialloginsc/index/get/t/image/f/scfb.png" alt="Login with Facebook" title="Login with Facebook"" style="width:40px;"></a></div>';  
+                }
+                else
+                {
+                  $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;"><a onclick="csgalogintrack(\'Facebook\',\''.$site_id.'\');cspopupCenterMagentoLogin(\''.Mage::getBaseUrl().'soclever_socialloginsc/index/fblogin?lc='.$lc.'\',\'Login With FB\',\'400\',\'300\');"  href=\'javascript:void(0)\'><img src="'.Mage::getBaseUrl().'soclever_socialloginsc/index/get/t/image/f/scfb.png" alt="Login with Facebook" title="Login with Facebook"" style="width:40px;"></a></div>';  
+                }     
+                $imgdiv .=PHP_EOL;
+                
+            }
+            if(in_array('4',$provider_arr))
+            {
+                
+                if($isIosChrome)
+                {
+                  $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;"><a onclick="csgalogintrack(\'Google+\',\''.$site_id.'\');"  href=\''.Mage::getBaseUrl().'soclever_socialloginsc/index/gplogin?lc='.$lc.'\'><img src="'.Mage::getBaseUrl().'soclever_socialloginsc/index/get/t/image/f/scgp.png" alt="Login with Google+" title="Login with Google+"" style="width:40px;"></a></div>';  
+                }
+                else
+                {
+                  $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;"><a onclick="csgalogintrack(\'Google+\',\''.$site_id.'\');cspopupCenterMagentoLogin(\''.Mage::getBaseUrl().'soclever_socialloginsc/index/gplogin?lc='.$lc.'\',\'Login With Google+\',\'400\',\'300\');"  href=\'javascript:void(0)\'><img src="'.Mage::getBaseUrl().'soclever_socialloginsc/index/get/t/image/f/scgp.png" alt="Login with Google+" title="Login with Google+"" style="width:40px;"></a></div>';  
+                }     
+                $imgdiv .=PHP_EOL;
+                
+            }
+            if(in_array('7',$provider_arr))
+            {
+                
+                if($isIosChrome)
+                {
+                  $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;"><a onclick="csgalogintrack(\'LinkedIN\',\''.$site_id.'\');"  href=\''.Mage::getBaseUrl().'soclever_socialloginsc/index/lilogin?lc='.$lc.'\'><img src="'.Mage::getBaseUrl().'soclever_socialloginsc/index/get/t/image/f/scli.png" alt="Login with LinkedIN!" title="Login with LinkedIN!"" style="width:40px;"></a></div>';  
+                }
+                else
+                {
+                  $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;"><a onclick="csgalogintrack(\'LinkedIN\',\''.$site_id.'\');cspopupCenterMagentoLogin(\''.Mage::getBaseUrl().'soclever_socialloginsc/index/lilogin?lc='.$lc.'\',\'Login With FB\',\'400\',\'500\');"  href=\'javascript:void(0)\'><img src="'.Mage::getBaseUrl().'soclever_socialloginsc/index/get/t/image/f/scli.png" alt="Login with LinkedIN" title="Login with LinkedIN"" style="width:40px;"></a></div>';  
+                }     
+                $imgdiv .=PHP_EOL;
+                
+            }
+            if(in_array('8',$provider_arr))
+            {
+                
+                if($isIosChrome)
+                {
+                  $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;"><a onclick="csgalogintrack(\'Microsoft\',\''.$site_id.'\');"  href=\''.Mage::getBaseUrl().'soclever_socialloginsc/index/mslogin?lc='.$lc.'\'><img src="'.Mage::getBaseUrl().'soclever_socialloginsc/index/get/t/image/f/scms.png" alt="Login with Microsoft" title="Login with Microsoft"" style="width:40px;"></a></div>';  
+                }
+                else
+                {
+                  $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;"><a onclick="csgalogintrack(\'Microsoft\',\''.$site_id.'\');cspopupCenterMagentoLogin(\''.Mage::getBaseUrl().'soclever_socialloginsc/index/mslogin?lc='.$lc.'\',\'Login With FB\',\'400\',\'500\');"  href=\'javascript:void(0)\'><img src="'.Mage::getBaseUrl().'soclever_socialloginsc/index/get/t/image/f/scms.png" alt="Login with Microsoft" title="Login with Microsoft" style="width:40px;"></a></div>';  
+                }     
+                $imgdiv .=PHP_EOL;
+                
+            }
+            if(in_array('13',$provider_arr))
+            {
+                
+                if($isIosChrome)
+                {
+                  $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;"><a onclick="csgalogintrack(\'Twitter\',\''.$site_id.'\');"  href=\''.Mage::getBaseUrl().'soclever_socialloginsc/index/twlogin?lc='.$lc.'\'><img src="'.Mage::getBaseUrl().'soclever_socialloginsc/index/get/t/image/f/sctw.png" alt="Login with Twitter" title="Login with Twitter"" style="width:40px;"></a></div>';  
+                }
+                else
+                {
+                  $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;"><a onclick="csgalogintrack(\'Twitter\',\''.$site_id.'\');cspopupCenterMagentoLogin(\''.Mage::getBaseUrl().'soclever_socialloginsc/index/twlogin?lc='.$lc.'\',\'Login With FB\',\'600\',\'400\');"  href=\'javascript:void(0)\'><img src="'.Mage::getBaseUrl().'soclever_socialloginsc/index/get/t/image/f/sctw.png" alt="Login with Twitter" title="Login with Twitter" style="width:40px;"></a></div>';  
+                }     
+                $imgdiv .=PHP_EOL;
+                
+            }
+            if(in_array('16',$provider_arr))
+            {
+                
+                if($isIosChrome)
+                {
+                  $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;"><a onclick="csgalogintrack(\'PayPal\',\''.$site_id.'\');"  href=\''.Mage::getBaseUrl().'soclever_socialloginsc/index/paypallogin?lc='.$lc.'\'><img src="'.Mage::getBaseUrl().'soclever_socialloginsc/index/get/t/image/f/scpp.png" alt="Login with PayPal" title="Login with PayPal"" style="width:40px;"></a></div>';  
+                }
+                else
+                {
+                  $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;"><a onclick="csgalogintrack(\'PayPal\',\''.$site_id.'\');cspopupCenterMagentoLogin(\''.Mage::getBaseUrl().'soclever_socialloginsc/index/paypallogin?lc='.$lc.'\',\'Login With FB\',\'600\',\'500\');"  href=\'javascript:void(0)\'><img src="'.Mage::getBaseUrl().'soclever_socialloginsc/index/get/t/image/f/scpp.png" alt="Login with PayPal" title="Login with PayPal"" style="width:40px;"></a></div>';  
+                }     
+                $imgdiv .=PHP_EOL;
+                
+            }
+            if(in_array('15',$provider_arr))
+            {
+                
+                if($isIosChrome)
+                {
+                  $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;"><a onclick="csgalogintrack(\'Yahoo\',\''.$site_id.'\');"  href=\''.Mage::getBaseUrl().'soclever_socialloginsc/index/yahoologin?login=1&lc='.$lc.'\'><img src="'.Mage::getBaseUrl().'soclever_socialloginsc/index/get/t/image/f/scyh.png" alt="Login with Yahoo!" title="Login with Yahoo!"" style="width:40px;"></a></div>';  
+                }
+                else
+                {
+                  $imgdiv .='<div style="float: left; margin-right: 10px;margin-top: 10px;"><a onclick="csgalogintrack(\'Yahoo\',\''.$site_id.'\');cspopupCenterMagentoLogin(\''.Mage::getBaseUrl().'soclever_socialloginsc/index/yahoologin?login=1&lc='.$lc.'\',\'Login With FB\',\'600\',\'500\');"  href=\'javascript:void(0)\'><img src="'.Mage::getBaseUrl().'soclever_socialloginsc/index/get/t/image/f/scyh.png" alt="Login with Yahoo" title="Login with Yahoo"" style="width:40px;"></a></div>';  
+                }     
+                $imgdiv .=PHP_EOL;
+                
+            }    
+            $display_buttons='<div  style="margin-bottom:20px;width:52%;margin-bottom:10px;border:0px solid #bbb6a5;clear:both;overflow:hidden;height:1%;"><div><b>'.$loginboxcaption.'</b></div>'.$imgdiv.'';
+            if($showpoweredby=='1')
+         {
+            $display_buttons .='<div style="clear: both;text-align:left;padding-top:10px;"><b>Powered by </b><a href="https://www.socleversocial.com/" target="_blank">Socleversocial.com</a></div>';
+         }
+             $display_buttons .='</div>';
+             
+             echo $display_buttons;
+          }
+          else
+          {
+          
+          
+            
           if(strtolower($btn_style)=='custom')
           {
-            $provider_arr=explode(",",$selected_providers);
+           
             $fbpath=Mage::getStoreConfig('socialloginsc_options/displaysettings/buttonstylefb');
             $gppath=Mage::getStoreConfig('socialloginsc_options/displaysettings/buttonstylegp');
             $lipath=Mage::getStoreConfig('socialloginsc_options/displaysettings/buttonstyleli');
             $twpath=Mage::getStoreConfig('socialloginsc_options/displaysettings/buttonstyletw');
             $yhpath=Mage::getStoreConfig('socialloginsc_options/displaysettings/buttonstyleyh');
             $pppath=Mage::getStoreConfig('socialloginsc_options/displaysettings/buttonstylepp');
+            $mspath=Mage::getStoreConfig('socialloginsc_options/displaysettings/buttonstylems');
+            
             $gapi=file_get_contents('https://www.socleversocial.com/dashboard/get_fb_data.php?action=gapi&siteid='.$site_id.''); 
             if(in_array('2',$provider_arr) && !empty($fbpath))
             {
+                
                 $bg_position=$btn_width;
+       
                 $fb_div .='<script type="text/javascript">';
                 $imgdiv='<div style="float: left; margin-right: 10px;margin-top: 10px;"><img src="'.$fbpath.'" alt="Login with Facebook" title="Login with Facebook""></div>';
                 $fb_div .='csbutton.init([\''.$imgdiv.'\',\'100%\' ,\'100%\',\'login_fb\']);'.PHP_EOL;
@@ -56,6 +227,18 @@ $selected_providers=Mage::getStoreConfig('socialloginsc_options/displaysettings/
                 $imgdiv='<div style="float: left; margin-right: 10px;margin-top: 10px;"><img src="'.$lipath.'" alt="Login with LinkedIN" title="Login with LinkedIN""></div>';
                 $li_div .='csbutton.init([\''.$imgdiv.'\',\'100%\' ,\'100%\',\'login\',\'li\']);'.PHP_EOL;
                 $li_div .='csbutton.putCsbutton();         
+                          </script>';
+                
+            }
+            
+            $ms_div="";
+            if(!empty($mspath) && in_array('8',$provider_arr))
+            {
+                
+                $ms_div .='<script type="text/javascript">';
+                $imgdiv='<div style="float: left; margin-right: 10px;margin-top: 10px;"><img src="'.$mspath.'" alt="Login with Microsoft" title="Login with Microsoft""></div>';
+                $ms_div .='csbutton.init([\''.$imgdiv.'\',\'100%\' ,\'100%\',\'login\',\'ms\']);'.PHP_EOL;
+                $ms_div .='csbutton.putCsbutton();         
                           </script>';
                 
             }
@@ -95,7 +278,7 @@ $selected_providers=Mage::getStoreConfig('socialloginsc_options/displaysettings/
               
             }
             
-            $imgdiv='<script type="text/javascript" src="https://www.socleversocial.com/dashboard/client_share_js/csloginbuttonsonlysc_'.$site_id.'.js"></script>'.PHP_EOL.$fb_div.PHP_EOL.$gp_div.PHP_EOL.$li_div.PHP_EOL.$tw_div.PHP_EOL.$yh_div.PHP_EOL.$ig_div.PHP_EOL.$pp_div;
+            $imgdiv='<script type="text/javascript" src="https://www.socleversocial.com/dashboard/client_share_js/csloginbuttonsonlysc_'.$site_id.'.js"></script>'.PHP_EOL.$fb_div.PHP_EOL.$gp_div.PHP_EOL.$li_div.PHP_EOL.$ms_div.PHP_EOL.$tw_div.PHP_EOL.$yh_div.PHP_EOL.$ig_div.PHP_EOL.$pp_div;
 
 
             
@@ -113,7 +296,8 @@ $selected_providers=Mage::getStoreConfig('socialloginsc_options/displaysettings/
           }
            else
            {
-          $valid_data=file_get_contents("https://www.socleversocial.com/dashboard/mage_login_buttons.php?login_only=2&site_id=".$site_id."&api_key=".$api_key."&api_secret=".$api_secret."&csplatform=magentologin&rt=gp&bcaption=".base64_encode($loginboxcaption)."&bshow=".$showpoweredby."&bstyle=".$btn_style."&bsize=".$button_size."&providers=".$selected_providers);
+          $helper=Mage::helper('socialloginsc');  
+          $valid_data=$helper->get_cscurl("https://www.socleversocial.com/dashboard/mage_login_buttons.php?login_only=2&site_id=".$site_id."&api_key=".$api_key."&api_secret=".$api_secret."&csplatform=magentologin&rt=gp&bcaption=".base64_encode($loginboxcaption)."&bshow=".$showpoweredby."&bstyle=".$btn_style."&bsize=".$button_size."&providers=".$selected_providers);
           
           if($valid_data && $valid_data!='0~~0')
           {
@@ -124,6 +308,12 @@ $selected_providers=Mage::getStoreConfig('socialloginsc_options/displaysettings/
            echo"";
          }
          }
+          
+            
+            
+          }
+          
+          
          }
          echo"";
  
@@ -138,20 +328,3 @@ $selected_providers=Mage::getStoreConfig('socialloginsc_options/displaysettings/
 ?>
 
 
-
-
-
-<script type="text/javascript">
-function popupCenter(url) {
-  var title='Login with twitter';
-  var w=600;
-  var h=436;  
-  var left = (screen.width/2)-(w/2);
-  var top = (screen.height/2)-(h/2);
-  return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
-} 
-function showPopup(url){
-win = new Window({ title: "Login With Twitter", url:url, zIndex:3000, destroyOnClose: true, recenterAuto:false, resizable: false, width:450, height:473, minimizable: false, maximizable: false, draggable: false});
-win.showCenter(true);
-}
-</script>
