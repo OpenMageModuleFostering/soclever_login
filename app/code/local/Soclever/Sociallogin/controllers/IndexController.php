@@ -125,6 +125,9 @@ $customer = Mage::getModel("customer/customer");
   Mage::getModel('core/session', array('name' => 'frontend'));
   $customer->setWebsiteId(Mage::app()->getWebsite()->getId());
   $customer->loadByEmail($username);
+  $customer->setCustomerActivated(true);
+  $customer->save();              
+ 
 
   $redirect_location=($_COOKIE['lc']=='c')?Mage::getBaseUrl()."checkout/onepage/":Mage::getBaseUrl()."customer/account/";
   if(isset($_COOKIE['lch']) && $_COOKIE['lch']!='')
@@ -231,6 +234,9 @@ $customer = Mage::getModel("customer/customer");
   Mage::getModel('core/session', array('name' => 'frontend'));
   $customer->setWebsiteId(Mage::app()->getWebsite()->getId());
   $customer->loadByEmail($username);
+  $customer->setCustomerActivated(true);
+  $customer->save();              
+ 
   $redirect_location=($_GET['lc']=='c')?Mage::getBaseUrl()."checkout/onepage/":Mage::getBaseUrl()."customer/account/";
   $is_from='7';
   Mage::getSingleton('core/session')->setSessionVariable($is_from);
@@ -419,7 +425,10 @@ $customer = Mage::getModel("customer/customer");
   
   Mage::getModel('core/session', array('name' => 'frontend'));
   $customer->setWebsiteId(Mage::app()->getWebsite()->getId());
-  $customer->loadByEmail($username);  
+  $customer->loadByEmail($username);
+  $customer->setCustomerActivated(true);
+  $customer->save();              
+   
   $this->getSession()->loginById($customer->getId());
   
   if(Mage::getSingleton('customer/session')->isLoggedIn())

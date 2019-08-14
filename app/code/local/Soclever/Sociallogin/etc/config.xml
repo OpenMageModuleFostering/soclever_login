@@ -22,7 +22,8 @@
 <default>
         <sociallogin_options>
             <displaysettings>
-                <buttonstyle>ic</buttonstyle>                
+                <buttonstyle>ic</buttonstyle>  
+                <socialloginboxcaption>Login With:</socialloginboxcaption>              
             </displaysettings>
         </sociallogin_options>
     </default>
@@ -114,5 +115,16 @@
 				<class>Soclever_Sociallogin_Helper</class>
 			</sociallogin>
 		</helpers>
+        <events>        
+    <admin_system_config_changed_section_sociallogin_options>   
+    <observers>
+    <myobserver>
+        <type>singleton</type>
+        <class>sociallogin/observer</class>
+        <method>writejs</method> 
+    </myobserver>
+    </observers>
+</admin_system_config_changed_section_sociallogin_options>
+</events>
 	</global>
 </config>
