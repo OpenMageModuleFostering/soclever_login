@@ -41,7 +41,7 @@ require('http.php');
 require('oauth_client.php');
 $client = new oauth_client_class;
     $client->server = 'Twitter';
-    $client->redirect_uri = 'http://eurekadigital.com.au/mageonlylogin/index.php/soclever_socialloginsc/index/twlogin';
+    $client->redirect_uri = ''.Mage::getBaseUrl().'soclever_socialloginsc/index/twlogin';
     
     $client->client_id = $my_Api[0]; 
     $application_line = __LINE__;
@@ -511,54 +511,36 @@ if($is_new=='1' && Mage::getStoreConfig('socialloginsc_options/displaysettings/s
   }
   $is_from='1';
   Mage::getSingleton('core/session')->setSessionVariable($is_from); 
-  ?>
+  $isIosChrome = (strpos($_SERVER['HTTP_USER_AGENT'], 'CriOS') !== false) ? true : false;
+  
+  if(!$isIosChrome) { ?>    
+  
   <script type="text/javascript">
   
   setTimeout(function(){
     
-    
-    window.location.href="<?php echo $redirect_location;?>";
+    opener.location.href="<?php echo $redirect_location;?>";
+    this.close();
     
     },1000);
-    
-  /*setTimeout(function(){
-    
-    
-    window.close();
-            //window.opener.location = window.opener.window.location;
-    
-    /*try{
-        if(parent.window.opener != null && ! parent.window.opener)
-    {
-      alert("good");
-    }
-
-    }catch(e){ alert("message="+e.description);}  
-*/
-
-   //alert("called redirection=="+top.window.opener.document.URL+"=");
-//top.window.location.assign("<?php echo Mage::getBaseUrl();?>customer/account/edit/");
-
-//   top.window.location.href="<?php echo Mage::getBaseUrl();?>customer/account/edit/";
-   //close();
-   //return false;
-    /*if(top.window.opener.document.URL.indexOf('login') > -1)
-                            {
-                                top.window.opener.location.href="<?php echo Mage::getBaseUrl();?>customer/account/edit/";
-                                close();
-                            }
-                            else
-                            {
-                                top.window.opener.location.href="<?php echo Mage::getBaseUrl();?>checkout/onepage/";
-                                close();
-                                
-                            }*/
-                            
-  /*}, 3000);*/
   </script>
   <?php
+  }
+      
     //echo"<img src='https://www.socleversocial.com/dashboard/images/pw.gif' alt='wait!' title='wait!'>";  
    $this->getSession()->loginById($customer->getId());
+   
+   if(Mage::getSingleton('customer/session')->isLoggedIn() && $isIosChrome)
+   {
+    ?>
+    <script type="text/javascript">
+    
+    window.location.href="<?php echo $redirect_location; ?>";
+    </script>
+    <?php
+    //header("location:".$redirect_location."");
+    
+   }  
    exit;
           }  
         }	   
@@ -626,13 +608,30 @@ $customer = Mage::getModel("customer/customer");
   $redirect_location=($_GET['lc']=='c')?Mage::getBaseUrl()."checkout/onepage/":Mage::getBaseUrl()."customer/account/";
   $is_from='4';
   Mage::getSingleton('core/session')->setSessionVariable($is_from);
+  $isIosChrome = (strpos($_SERVER['HTTP_USER_AGENT'], 'CriOS') !== false) ? true : false;
+  if(!$isIosChrome)
+  {
   ?>
   <script type="text/javascript">
   setTimeout(function(){  opener.location.href="<?php echo $redirect_location; ?>";close(); },1000);
   </script>
   <?php
+  }
+  
     //echo"<img src='https://www.socleversocial.com/dashboard/images/pw.gif' alt='wait!' title='wait!'>";  
    $this->getSession()->loginById($customer->getId());
+   
+   if(Mage::getSingleton('customer/session')->isLoggedIn() && $isIosChrome)
+   {
+    ?>
+    <script type="text/javascript">
+    
+    window.location.href="<?php echo $redirect_location; ?>";
+    </script>
+    <?php
+    //header("location:".$redirect_location."");
+    
+   }
    exit;
       }   
           
@@ -689,13 +688,29 @@ $customer = Mage::getModel("customer/customer");
   $redirect_location=($_GET['lc']=='c')?Mage::getBaseUrl()."checkout/onepage/":Mage::getBaseUrl()."customer/account/";
   $is_from='7';
   Mage::getSingleton('core/session')->setSessionVariable($is_from);
+  $isIosChrome = (strpos($_SERVER['HTTP_USER_AGENT'], 'CriOS') !== false) ? true : false;
+  if(!$isIosChrome)
+  {
   ?>
   <script type="text/javascript">
   setTimeout(function(){ window.location.href="<?php echo $redirect_location; ?>"; },1000);
   </script>
   <?php
+  }
     //echo"<img src='https://www.socleversocial.com/dashboard/images/pw.gif' alt='wait!' title='wait!'>";  
    $this->getSession()->loginById($customer->getId());
+   
+   if(Mage::getSingleton('customer/session')->isLoggedIn() && $isIosChrome)
+   {
+    ?>
+    <script type="text/javascript">
+    
+    window.location.href="<?php echo $redirect_location; ?>";
+    </script>
+    <?php
+    //header("location:".$redirect_location."");
+    
+   }
    exit;
 }
 

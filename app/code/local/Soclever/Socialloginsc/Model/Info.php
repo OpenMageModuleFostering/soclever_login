@@ -48,7 +48,7 @@ class Soclever_Socialloginsc_Model_Info extends Mage_Adminhtml_Block_Abstract im
             <h4 class="ss_admin_fieldset_title"><strong><?php echo $this->__('Extension Information!') ?></strong></h4>
 
             <div style="margin:5px 0">
-                <strong>Version: </strong>1.2.0 <br/>
+                <strong>Version: </strong>1.2.1 <br/>
                 <strong>Author:</strong>Soclever Social<br/>
                 <strong>Website:</strong> <a href="https://www.socleversocial.com" target="_blank">www.socleversocial.com</a>
                 <br/>
